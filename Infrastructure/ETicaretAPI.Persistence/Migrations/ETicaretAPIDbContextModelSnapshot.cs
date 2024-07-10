@@ -46,7 +46,7 @@ namespace ETicaretAPI.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Addres")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -79,9 +79,6 @@ namespace ETicaretAPI.Persistence.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -93,8 +90,6 @@ namespace ETicaretAPI.Persistence.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Products");
                 });
@@ -119,17 +114,6 @@ namespace ETicaretAPI.Persistence.Migrations
                     b.HasOne("ETicaretAPI.Domain.Entities.Customer", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("ETicaretAPI.Domain.Entities.Product", b =>
-                {
-                    b.HasOne("ETicaretAPI.Domain.Entities.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

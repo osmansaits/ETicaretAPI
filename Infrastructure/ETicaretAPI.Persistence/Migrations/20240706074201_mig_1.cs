@@ -25,13 +25,28 @@ namespace ETicaretAPI.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    UnitsInStock = table.Column<int>(type: "integer", nullable: false),
+                    UnitPrice = table.Column<long>(type: "bigint", nullable: false),
+                    CreatedTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     CustomerId = table.Column<int>(type: "integer", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
-                    Addres = table.Column<string>(type: "text", nullable: false),
+                    Address = table.Column<string>(type: "text", nullable: false),
                     CustomerId1 = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -41,28 +56,6 @@ namespace ETicaretAPI.Persistence.Migrations
                     table.ForeignKey(
                         name: "FK_Orders_Customers_CustomerId1",
                         column: x => x.CustomerId1,
-                        principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    UnitsInStock = table.Column<int>(type: "integer", nullable: false),
-                    UnitPrice = table.Column<long>(type: "bigint", nullable: false),
-                    CustomerId = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Products", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Products_Customers_CustomerId",
-                        column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -101,11 +94,6 @@ namespace ETicaretAPI.Persistence.Migrations
                 name: "IX_Orders_CustomerId1",
                 table: "Orders",
                 column: "CustomerId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_CustomerId",
-                table: "Products",
-                column: "CustomerId");
         }
 
         /// <inheritdoc />
