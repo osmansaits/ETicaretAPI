@@ -15,11 +15,11 @@ namespace ETicaretAPI.Persistence.Concretes
             => new()
 
             {
-                new() {Id= Guid.NewGuid(), Name= "Bardak", CreatedTime = DateTime.Now, UnitPrice = 1000, UnitsInStock =1000},
-                new() {Id= Guid.NewGuid(), Name= "Tabak", CreatedTime = DateTime.Now, UnitPrice = 1000, UnitsInStock =1000},
-                new() {Id= Guid.NewGuid(), Name= "Kaşık", CreatedTime = DateTime.Now, UnitPrice = 1000, UnitsInStock =10000},
-                new() {Id= Guid.NewGuid(), Name= "Çatal", CreatedTime = DateTime.Now, UnitPrice = 1000, UnitsInStock =10000},
-                new() {Id= Guid.NewGuid(), Name= "Tepsi", CreatedTime = DateTime.Now, UnitPrice = 1000, UnitsInStock = 500}
+                new() {Id= Guid.NewGuid(), Name= "Bardak", UnitPrice = 1000, UnitsInStock =1000},
+                new() {Id= Guid.NewGuid(), Name= "Tabak",  UnitPrice = 1000, UnitsInStock =1000},
+                new() {Id= Guid.NewGuid(), Name= "Kaşık",  UnitPrice = 1000, UnitsInStock =10000},
+                new() {Id= Guid.NewGuid(), Name= "Çatal",  UnitPrice = 1000, UnitsInStock =10000},
+                new() {Id= Guid.NewGuid(), Name= "Tepsi",  UnitPrice = 1000, UnitsInStock = 500}
 
             };
 

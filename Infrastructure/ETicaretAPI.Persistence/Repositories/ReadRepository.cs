@@ -43,7 +43,7 @@ namespace ETicaretAPI.Persistence.Repositories
             if (!tracking)
                 query = query.AsNoTracking();
             return await query.FirstOrDefaultAsync(method);
-        }
+        } 
 
         public async Task<T> GetByIdAsync(string Id, bool tracking = true)
             //=> await Table.FirstOrDefaultAsync(data=>data.Id == Guid.Parse(Id));
